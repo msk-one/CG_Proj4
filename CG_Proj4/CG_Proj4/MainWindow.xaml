@@ -14,23 +14,14 @@
             <Grid Height="52">
                 <Label x:Name="coord_X" Content="X:" HorizontalAlignment="Left" Margin="45,0,0,0" VerticalAlignment="Top" Width="55"/>
                 <Label x:Name="coord_Y" Content="Y: " HorizontalAlignment="Left" Margin="95,0,0,0" VerticalAlignment="Top" Width="55"/>
-                <Button x:Name="button" Content="Copy coordinates" HorizontalAlignment="Left" Margin="35,26,0,0" VerticalAlignment="Top" Width="105" Click="button_Click"/>
+                <Button x:Name="button" Content="Add to polygon" HorizontalAlignment="Left" Margin="35,26,0,0" VerticalAlignment="Top" Width="105" Click="button_Click"/>
             </Grid>
             <Label x:Name="label1" Content="Filling method:" HorizontalAlignment="Center" Margin="0,15,0,0"/>
             <ComboBox x:Name="filling_type" Margin="15,0,20,0">
                 <ComboBoxItem Content="Scan-line #1" IsSelected="True"/>
                 <ComboBoxItem Content="Floodfill"/>
             </ComboBox>
-            <Label x:Name="label2" Content="Coordinates:" Margin="0,15,0,0" HorizontalAlignment="Center"/>
-            <Grid Height="35">
-                <TextBox x:Name="X1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="X1" VerticalAlignment="Top" Width="60" Margin="10,0,0,0"/>
-                <TextBox x:Name="Y1" HorizontalAlignment="Left" Height="23" Margin="95,0,0,0" TextWrapping="Wrap" Text="Y1" VerticalAlignment="Top" Width="60"/>
-            </Grid>
-            <Label x:Name="label3" Content="/|\ Coordinates of start /|\" Height="25" HorizontalAlignment="Left" Margin="5,0,0,0" Width="159"/>
-            <Grid Height="40" Margin="0,15,0,0">
-                <Label x:Name="label5" Content="Vertices no." HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="74"/>
-                <TextBox x:Name="verticesCount" HorizontalAlignment="Left" Margin="84,7,0,10" TextWrapping="Wrap" Text="3" Width="58"/>
-            </Grid>
+            <Button x:Name="button1" Content="Clear canvas" Margin="38,20,40,0" Click="button1_Click"/>
         </StackPanel>
         <StatusBar Height="19" VerticalAlignment="Bottom">
             <StatusBarItem Content="Ready" Height="19" VerticalAlignment="Top" HorizontalAlignment="Right"/>

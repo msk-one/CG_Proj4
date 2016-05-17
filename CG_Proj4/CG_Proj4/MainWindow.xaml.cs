@@ -17,9 +17,11 @@ namespace CG_Proj4
 {
     public partial class MainWindow : Window
     {
+        public List<Point> polyPoints { get; set; }
         private bool mouseClicked = true;
         public MainWindow()
         {
+            polyPoints = new List<Point>();
             InitializeComponent();
         }
 
@@ -43,35 +45,39 @@ namespace CG_Proj4
             string coordsX = coord_X.Content as string;
             string coordsY = coord_Y.Content as string;
 
-            X1.Text = coordsX.Substring(3);
-            Y1.Text = coordsY.Substring(3);
+            int cX = Convert.ToInt32(coordsX.Substring(3));
+            int cY = Convert.ToInt32(coordsY.Substring(3));
+
+            polyPoints.Add(new Point(cX, cY));
 
             mouseClicked = true;
         }
 
         private void line_button_Click(object sender, RoutedEventArgs e)
         {
-            int maxPolySize = 200;
+          
+            //int maxPolySize = 300;
 
-            int startX = Convert.ToInt32(X1.Text);
-            int startY = Convert.ToInt32(Y1.Text);
+            //int startX = Convert.ToInt32(X1.Text);
+            //int startY = Convert.ToInt32(Y1.Text);
 
-            int vCount = Convert.ToInt32(verticesCount.Text);
-            if (vCount < 3)
-            {
-                vCount = 3;
-                verticesCount.Text = "3";
-            }
+            //int vCount = Convert.ToInt32(verticesCount.Text);
+            //if (vCount < 3)
+            //{
+            //    vCount = 3;
+            //    verticesCount.Text = "3";
+            //}
 
-            List<Point> polyPoints = new List<Point>();
-            for (int i = 0; i < vCount; i++)
-            {
-                Random rn = new Random();
-                int tempX = rn.Next(startX - maxPolySize, startX + maxPolySize);
-                int tempY = rn.Next(startY - maxPolySize, startY + maxPolySize);
+            //Random rn = new Random();
+            //polyPoints = new List<Point>();
+            //for (int i = 0; i < vCount; i++)
+            //{
+                
+            //    int tempX = rn.Next(startX - maxPolySize, startX + maxPolySize);
+            //    int tempY = rn.Next(startY - maxPolySize, startY + maxPolySize);
 
-                polyPoints.Add(new Point(tempX, tempY));
-            }
+            //    polyPoints.Add(new Point(tempX, tempY));
+            //}
 
             Polygon myPolygon = new Polygon();
             myPolygon.Stroke = System.Windows.Media.Brushes.Black;
@@ -84,11 +90,17 @@ namespace CG_Proj4
             myPolygon.Points = myPointCollection;
 
             mainCanvas.Children.Add(myPolygon);
+            polyPoints.Clear();
         }
         
         private void circle_button_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: drawing random shapes
+        }
 
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            mainCanvas.Children.Clear();
         }
     }
 }
