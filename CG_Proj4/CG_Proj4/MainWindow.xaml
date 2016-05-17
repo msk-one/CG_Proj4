@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CG_Proj4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="CG Project 4" Height="768" Width="1024">
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Left" Height="720" Margin="835,0,0,0" VerticalAlignment="Top" Width="183" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+            <Button x:Name="line_button" Content="Random polygon" Margin="5,20,15,0" />
+            <Button x:Name="circle_button" Content="Random shape" Margin="5,5,15,0" />
+            <Label x:Name="label" Content="Coordinate helper:" Margin="38,10,37,0" HorizontalAlignment="Center"/>
+            <Grid Height="52">
+                <Label x:Name="coord_X" Content="X:" HorizontalAlignment="Left" Margin="45,0,0,0" VerticalAlignment="Top" Width="55"/>
+                <Label x:Name="coord_Y" Content="Y: " HorizontalAlignment="Left" Margin="95,0,0,0" VerticalAlignment="Top" Width="55"/>
+                <Button x:Name="button" Content="Copy coordinates" HorizontalAlignment="Left" Margin="35,26,0,0" VerticalAlignment="Top" Width="105" Click="button_Click"/>
+            </Grid>
+            <Label x:Name="label1" Content="Filling method:" HorizontalAlignment="Center" Margin="0,15,0,0"/>
+            <ComboBox x:Name="antialiasing_type" Margin="15,0,20,0">
+                <ComboBoxItem Content="Scan-line #1" IsSelected="True"/>
+                <ComboBoxItem Content="Floodfill"/>
+            </ComboBox>
+            <Label x:Name="label2" Content="Coordinates:" Margin="0,15,0,0" HorizontalAlignment="Center"/>
+            <Grid Height="35">
+                <TextBox x:Name="X1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="X1" VerticalAlignment="Top" Width="60" Margin="10,0,0,0"/>
+                <TextBox x:Name="Y1" HorizontalAlignment="Left" Height="23" Margin="95,0,0,0" TextWrapping="Wrap" Text="Y1" VerticalAlignment="Top" Width="60"/>
+            </Grid>
+            <Label x:Name="label3" Content="/|\ Coordinates of start /|\" Height="25" HorizontalAlignment="Left" Margin="5,0,0,0" Width="159"/>
+            <Grid Height="40" Margin="0,15,0,0">
+                <Label x:Name="label5" Content="Brush size:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="74"/>
+                <TextBox x:Name="brushSize" HorizontalAlignment="Left" Margin="84,7,0,10" TextWrapping="Wrap" Text="1" Width="58"/>
+            </Grid>
+        </StackPanel>
+        <StatusBar Height="19" VerticalAlignment="Bottom">
+            <StatusBarItem Content="Ready" Height="19" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        </StatusBar>
+        <Canvas x:Name="mainCanvas" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="835" Background="White" MouseMove="mainCanvas_MouseMove" MouseUp="mainCanvas_MouseUp" />
     </Grid>
 </Window>
