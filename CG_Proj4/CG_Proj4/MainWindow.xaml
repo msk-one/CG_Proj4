@@ -8,8 +8,8 @@
         Title="CG Project 4" Height="768" Width="1024">
     <Grid>
         <StackPanel HorizontalAlignment="Left" Height="720" Margin="835,0,0,0" VerticalAlignment="Top" Width="183" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
-            <Button x:Name="line_button" Content="Random polygon" Margin="5,20,15,0" />
-            <Button x:Name="circle_button" Content="Random shape" Margin="5,5,15,0" />
+            <Button x:Name="polygon_button" Content="Random polygon" Margin="5,20,15,0" Click="line_button_Click" />
+            <Button x:Name="shape_button" Content="Random shape" Margin="5,5,15,0" Click="circle_button_Click" />
             <Label x:Name="label" Content="Coordinate helper:" Margin="38,10,37,0" HorizontalAlignment="Center"/>
             <Grid Height="52">
                 <Label x:Name="coord_X" Content="X:" HorizontalAlignment="Left" Margin="45,0,0,0" VerticalAlignment="Top" Width="55"/>
@@ -17,7 +17,7 @@
                 <Button x:Name="button" Content="Copy coordinates" HorizontalAlignment="Left" Margin="35,26,0,0" VerticalAlignment="Top" Width="105" Click="button_Click"/>
             </Grid>
             <Label x:Name="label1" Content="Filling method:" HorizontalAlignment="Center" Margin="0,15,0,0"/>
-            <ComboBox x:Name="antialiasing_type" Margin="15,0,20,0">
+            <ComboBox x:Name="filling_type" Margin="15,0,20,0">
                 <ComboBoxItem Content="Scan-line #1" IsSelected="True"/>
                 <ComboBoxItem Content="Floodfill"/>
             </ComboBox>
@@ -28,8 +28,8 @@
             </Grid>
             <Label x:Name="label3" Content="/|\ Coordinates of start /|\" Height="25" HorizontalAlignment="Left" Margin="5,0,0,0" Width="159"/>
             <Grid Height="40" Margin="0,15,0,0">
-                <Label x:Name="label5" Content="Brush size:" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="74"/>
-                <TextBox x:Name="brushSize" HorizontalAlignment="Left" Margin="84,7,0,10" TextWrapping="Wrap" Text="1" Width="58"/>
+                <Label x:Name="label5" Content="Vertices no." HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="74"/>
+                <TextBox x:Name="verticesCount" HorizontalAlignment="Left" Margin="84,7,0,10" TextWrapping="Wrap" Text="3" Width="58"/>
             </Grid>
         </StackPanel>
         <StatusBar Height="19" VerticalAlignment="Bottom">
