@@ -57,7 +57,7 @@ namespace CG_Proj4
 
         private void line_button_Click(object sender, RoutedEventArgs e)
         {
-          
+
             //int maxPolySize = 300;
 
             //int startX = Convert.ToInt32(X1.Text);
@@ -74,7 +74,7 @@ namespace CG_Proj4
             //polyPoints = new List<Point>();
             //for (int i = 0; i < vCount; i++)
             //{
-                
+
             //    int tempX = rn.Next(startX - maxPolySize, startX + maxPolySize);
             //    int tempY = rn.Next(startY - maxPolySize, startY + maxPolySize);
 
@@ -94,7 +94,7 @@ namespace CG_Proj4
             mainCanvas.Children.Add(myPolygon);
             polyPoints.Clear();
         }
-        
+
         private void circle_button_Click(object sender, RoutedEventArgs e)
         {
             string coordsX = coord_X.Content as string;
@@ -137,9 +137,56 @@ namespace CG_Proj4
             Canvas.SetTop(selShape, p.Y - h);
         }
 
+        public WriteableBitmap toBmp(Canvas canvas)
+        {
+            Transform transform = canvas.LayoutTransform;
+            canvas.LayoutTransform = null;
+            Size size = new Size(canvas.Width, canvas.Height);
+            canvas.Measure(size);
+            canvas.Arrange(new Rect(size));
+            RenderTargetBitmap renderBitmap =
+              new RenderTargetBitmap(
+                (int)size.Width,
+                (int)size.Height,
+                96d,
+                96d,
+                PixelFormats.Pbgra32);
+
+            renderBitmap.Render(canvas);        
+            canvas.LayoutTransform = transform;
+        
+            return new WriteableBitmap(renderBitmap);
+        }
+
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             mainCanvas.Children.Clear();
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            string coordsX = coord_X.Content as string;
+            string coordsY = coord_Y.Content as string;
+
+            int cX = Convert.ToInt32(coordsX.Substring(3));
+            int cY = Convert.ToInt32(coordsY.Substring(3));
+
+            switch (filling_type.Text)
+            {
+                case "Scanline #1":
+
+                    break;
+                case "Floodfill 4X":
+                    Point stPt = new Point(cX, cY);
+                    Color target = Colors.White;
+                    Color repl = Colors.Violet;
+
+                    Algorithms.FloodFill(mainCanvas, stPt, target, repl);
+                    break;
+                case "Floodfill 8X":
+
+                    break;
+            }
         }
     }
 }
