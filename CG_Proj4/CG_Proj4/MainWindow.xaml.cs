@@ -19,9 +19,11 @@ namespace CG_Proj4
     {
         public List<Point> polyPoints { get; set; }
         private bool mouseClicked = true;
+        private Random rnd;
         public MainWindow()
         {
             polyPoints = new List<Point>();
+            rnd = new Random(12345);
             InitializeComponent();
         }
 
@@ -95,7 +97,44 @@ namespace CG_Proj4
         
         private void circle_button_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: drawing random shapes
+            string coordsX = coord_X.Content as string;
+            string coordsY = coord_Y.Content as string;
+
+            int cX = Convert.ToInt32(coordsX.Substring(3));
+            int cY = Convert.ToInt32(coordsY.Substring(3));
+
+            DrawShape(new Point(cX, cY));
+        }
+
+        private void DrawShape(Point p)
+        {
+            int h = rnd.Next(100, 400);
+            int w = rnd.Next(100, 400);
+
+            Shape shape = new System.Windows.Shapes.Rectangle
+            {
+                Stroke = Brushes.Black,
+                StrokeThickness = 2,
+                Height = h,
+                Width = w
+            };
+
+            Shape el_shape = new System.Windows.Shapes.Ellipse
+            {
+                Stroke = Brushes.Black,
+                StrokeThickness = 2,
+                Height = h,
+                Width = w
+            };
+
+            List<Shape> shList = new List<Shape>();
+            shList.Add(shape);
+            shList.Add(el_shape);
+
+            Shape selShape = shList[rnd.Next(0, 2)];
+            mainCanvas.Children.Add(selShape);
+            Canvas.SetLeft(selShape, p.X - w);
+            Canvas.SetTop(selShape, p.Y - h);
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
