@@ -28,7 +28,6 @@
         <StatusBar Height="19" VerticalAlignment="Bottom">
             <StatusBarItem Content="Ready" Height="19" VerticalAlignment="Top" HorizontalAlignment="Right"/>
         </StatusBar>
-        <Canvas x:Name="mainCanvas" HorizontalAlignment="Left" Height="316" VerticalAlignment="Top" Width="835" Background="White" MouseMove="mainCanvas_MouseMove" MouseUp="mainCanvas_MouseUp" Margin="0,404,0,0" />
-        <Image x:Name="mainImage" HorizontalAlignment="Left" Height="404" VerticalAlignment="Top" Width="835"/>
+        <Image x:Name="mainImage" HorizontalAlignment="Left" Width="835" Height="718" VerticalAlignment="Top" MouseMove="mainCanvas_MouseMove" MouseUp="mainCanvas_MouseUp"/>
     </Grid>
 </Window>
