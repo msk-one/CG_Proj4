@@ -24,7 +24,11 @@ namespace CG_Proj4
         {
             polyPoints = new List<Point>();
             rnd = new Random(12345);
+
             InitializeComponent();
+
+            WriteableBitmap writeableBmp = BitmapFactory.New(835, 404);
+            mainImage.Source = writeableBmp;
         }
 
         private void mainCanvas_MouseMove(object sender, MouseEventArgs e)
@@ -137,27 +141,6 @@ namespace CG_Proj4
             Canvas.SetTop(selShape, p.Y - h);
         }
 
-        public WriteableBitmap toBmp(Canvas canvas)
-        {
-            Transform transform = canvas.LayoutTransform;
-            canvas.LayoutTransform = null;
-            Size size = new Size(canvas.Width, canvas.Height);
-            canvas.Measure(size);
-            canvas.Arrange(new Rect(size));
-            RenderTargetBitmap renderBitmap =
-              new RenderTargetBitmap(
-                (int)size.Width,
-                (int)size.Height,
-                96d,
-                96d,
-                PixelFormats.Pbgra32);
-
-            renderBitmap.Render(canvas);        
-            canvas.LayoutTransform = transform;
-        
-            return new WriteableBitmap(renderBitmap);
-        }
-
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             mainCanvas.Children.Clear();
@@ -181,7 +164,7 @@ namespace CG_Proj4
                     Color target = Colors.White;
                     Color repl = Colors.Violet;
 
-                    Algorithms.FloodFill(mainCanvas, stPt, target, repl);
+                    //Algorithms.FloodFill(mainCanvas, stPt, target, repl);
                     break;
                 case "Floodfill 8X":
 
